@@ -1,0 +1,204 @@
+"use client";
+
+import { useState, type FormEvent } from "react";
+import { IoMapOutline } from "react-icons/io5";
+import { IoCloseOutline } from "react-icons/io5";
+
+import Button from "@/components/buttons/buttons";
+import type {
+  TruckEngine,
+  TruckFilters,
+  TruckForm,
+  TruckTransmission,
+} from "@/types/filters";
+
+import styles from "./catalog-filter.module.css";
+
+const initialFilters: TruckFilters = {
+  location: "",
+  form: "",
+  engine: "",
+  transmission: "",
+};
+
+const truckFormOptions = [
+  { label: "Alcove", value: "alcove" },
+  { label: "Panel Van", value: "panel_van" },
+  { label: "Integrated", value: "integrated" },
+  { label: "Semi Integrated", value: "semi_integrated" },
+] as const;
+
+const engineOptions = [
+  { label: "Diesel", value: "diesel" },
+  { label: "Petrol", value: "petrol" },
+  { label: "Hybrid", value: "hybrid" },
+  { label: "Electric", value: "electric" },
+] as const;
+
+const transmissionOptions = [
+  { label: "Automatic", value: "automatic" },
+  { label: "Manual", value: "manual" },
+] as const;
+
+interface CatalogFilterProps {
+  onSubmit: (filters: TruckFilters) => void;
+}
+
+export default function CatalogFilter({
+  onSubmit,
+}: CatalogFilterProps) {
+  const [filters, setFilters] = useState<TruckFilters>(initialFilters);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSubmit(filters);
+  };
+
+  const handleClear = () => {
+    setFilters(initialFilters);
+    onSubmit(initialFilters);
+  };
+
+  return (
+    <aside className={styles.sidebar}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.locationGroup}>
+          <label className={styles.label} htmlFor="location">
+            Location
+          </label>
+
+          <div className={styles.inputWrapper}>
+            <IoMapOutline
+              className={styles.locationIcon}
+              aria-hidden="true"
+            />
+
+            <input
+              id="location"
+              className={styles.locationInput}
+              type="text"
+              placeholder="City"
+              value={filters.location}
+              onChange={(event) =>
+                setFilters((previous) => ({
+                  ...previous,
+                  location: event.target.value,
+                }))
+              }
+            />
+          </div>
+        </div>
+
+        <div className={styles.filters}>
+            <h2 className={styles.title}>Filters</h2>
+
+            <fieldset className={styles.fieldset}>
+            <legend className={styles.legend}>Camper form</legend>
+
+            {truckFormOptions.map((option) => (
+                <RadioOption
+                key={option.value}
+                label={option.label}
+                name="form"
+                value={option.value}
+                checked={filters.form === option.value}
+                onChange={(value) =>
+                    setFilters((previous) => ({
+                    ...previous,
+                    form: value as TruckForm,
+                    }))
+                }
+                />
+            ))}
+            </fieldset>
+
+            <fieldset className={styles.fieldset}>
+            <legend className={styles.legend}>Engine</legend>
+
+            {engineOptions.map((option) => (
+                <RadioOption
+                key={option.value}
+                label={option.label}
+                name="engine"
+                value={option.value}
+                checked={filters.engine === option.value}
+                onChange={(value) =>
+                    setFilters((previous) => ({
+                    ...previous,
+                    engine: value as TruckEngine,
+                    }))
+                }
+                />
+            ))}
+            </fieldset>
+
+            <fieldset className={styles.fieldset}>
+            <legend className={styles.legend}>Transmission</legend>
+
+            {transmissionOptions.map((option) => (
+                <RadioOption
+                key={option.value}
+                label={option.label}
+                name="transmission"
+                value={option.value}
+                checked={filters.transmission === option.value}
+                onChange={(value) =>
+                    setFilters((previous) => ({
+                    ...previous,
+                    transmission: value as TruckTransmission,
+                    }))
+                }
+                />
+            ))}
+            </fieldset>
+        </div>
+
+        <div className={styles.actions}>
+          <Button type="submit" variant="primary">
+            Search
+          </Button>
+          
+          <Button type="submit" variant="secondary">
+            <IoCloseOutline 
+              className={styles.closeIcon}
+              aria-hidden="true"
+            />
+            Clear filters
+          </Button>
+        </div>
+      </form>
+    </aside>
+  );
+}
+
+interface RadioOptionProps {
+  label: string;
+  name: string;
+  value: string;
+  checked: boolean;
+  onChange: (value: string) => void;
+}
+
+function RadioOption({
+  label,
+  name,
+  value,
+  checked,
+  onChange,
+}: RadioOptionProps) {
+  return (
+    <label className={styles.radioLabel}>
+      <input
+        className={styles.radioInput}
+        type="radio"
+        name={name}
+        value={value}
+        checked={checked}
+        onChange={(event) => onChange(event.target.value)}
+      />
+
+      <span className={styles.customRadio} aria-hidden="true" />
+      <span>{label}</span>
+    </label>
+  );
+}
