@@ -1,0 +1,29 @@
+.hero {
+    color: var(--inputs);
+    background-image: url("/images/hero.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    aspect-ratio: 1440 / 696;
+    min-height: 696px;
+}
+
+.heroContainer {
+    padding-top: 195px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-bottom: 40px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 0.67;
+    color: var(--inputs);
+}

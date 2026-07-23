@@ -1,0 +1,19 @@
+.logo {
+    display: inline-flex;
+    align-items: center;
+
+    width: 136px;
+    height: 16px;
+
+    font-family: var(--font-family);
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 16px;
+    white-space: nowrap;
+
+    cursor: pointer;
+}
+
+.accent {
+    color: var(--main);
+}

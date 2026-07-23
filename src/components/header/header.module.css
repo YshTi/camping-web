@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 72px; 
+    width: 100%;
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 450px;
+}
+
+.nav {
+    display: inline-flex;
+    gap: 32px;
+}
+
+.link {
+    color: var(--main);
+    text-decoration: none;
+    transition:
+        color 200ms ease,
+        text-decoration-color 200ms ease;
+}
+
+.active {
+    color: var(--text);
+}
+
+.link:hover,
+.link:focus-visible {
+    color: var(--green-hover);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.link:focus-visible {
+    outline: none;
+}
