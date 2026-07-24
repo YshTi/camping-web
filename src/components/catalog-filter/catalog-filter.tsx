@@ -60,7 +60,9 @@ export default function CatalogFilter({
 
           <div className={styles.inputWrapper}>
             <IoMapOutline
-              className={styles.locationIcon}
+              className={`${styles.locationIcon} ${
+                filters.location ? styles.locationIconActive : ""
+              }`}
               aria-hidden="true"
             />
 
