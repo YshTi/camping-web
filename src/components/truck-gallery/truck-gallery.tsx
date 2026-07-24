@@ -3,13 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
-import {
-  A11y,
-  FreeMode,
-  Keyboard,
-  Mousewheel,
-  Thumbs,
-} from "swiper/modules";
+import { A11y, FreeMode, Keyboard, Mousewheel, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import type { TruckGalleryImage } from "@/types/truck";
@@ -25,23 +19,15 @@ interface TruckGalleryProps {
   truckName: string;
 }
 
-export default function TruckGallery({
-  images,
-  truckName,
-}: TruckGalleryProps) {
-  const [thumbsSwiper, setThumbsSwiper] =
-    useState<SwiperType | null>(null);
+export default function TruckGallery({ images, truckName }: TruckGalleryProps) {
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
 
   const sortedImages = [...images].sort(
     (first, second) => first.order - second.order,
   );
 
   if (sortedImages.length === 0) {
-    return (
-      <div className={styles.empty}>
-        No images available
-      </div>
-    );
+    return <div className={styles.empty}>No images available</div>;
   }
 
   const canLoop = sortedImages.length > 1;
@@ -53,21 +39,16 @@ export default function TruckGallery({
     >
       <Swiper
         className={styles.mainSlider}
-        modules={[
-          A11y,
-          Keyboard,
-          Mousewheel,
-          Thumbs,
-        ]}
+        modules={[A11y, Keyboard, Mousewheel, Thumbs]}
         keyboard={{
           enabled: true,
         }}
         mousewheel={{
-            forceToAxis: true,
-            releaseOnEdges: false,
-            sensitivity: 0.4,
-            thresholdDelta: 20,
-            thresholdTime: 500,
+          forceToAxis: true,
+          releaseOnEdges: false,
+          sensitivity: 0.4,
+          thresholdDelta: 20,
+          thresholdTime: 500,
         }}
         preventInteractionOnTransition
         speed={500}
@@ -75,10 +56,7 @@ export default function TruckGallery({
         spaceBetween={16}
         slidesPerGroup={1}
         thumbs={{
-          swiper:
-            thumbsSwiper && !thumbsSwiper.destroyed
-              ? thumbsSwiper
-              : null,
+          swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
       >
         {sortedImages.map((image, index) => (
@@ -101,11 +79,7 @@ export default function TruckGallery({
       {sortedImages.length > 1 && (
         <Swiper
           className={styles.thumbnailSlider}
-          modules={[
-            A11y,
-            FreeMode,
-            Thumbs,
-          ]}
+          modules={[A11y, FreeMode, Thumbs]}
           onSwiper={setThumbsSwiper}
           slidesPerView={4}
           spaceBetween={32}

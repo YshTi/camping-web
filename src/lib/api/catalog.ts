@@ -1,11 +1,7 @@
 import axios from "axios";
 
 import type { TruckFilters } from "@/types/filters";
-import type {
-  Truck,
-  TruckReview,
-  TrucksResponse,
-} from "@/types/truck";
+import type { Truck, TruckReview, TrucksResponse } from "@/types/truck";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -40,12 +36,8 @@ export async function getTrucks({
   return response.data;
 }
 
-export async function getTruckById(
-  camperId: string,
-): Promise<Truck> {
-  const response = await api.get<Truck>(
-    `/campers/${camperId}`,
-  );
+export async function getTruckById(camperId: string): Promise<Truck> {
+  const response = await api.get<Truck>(`/campers/${camperId}`);
 
   return response.data;
 }
@@ -53,9 +45,7 @@ export async function getTruckById(
 export async function getTruckReviews(
   camperId: string,
 ): Promise<TruckReview[]> {
-  const response = await api.get<TruckReview[]>(
-    `/campers/${camperId}/reviews`,
-  );
+  const response = await api.get<TruckReview[]>(`/campers/${camperId}/reviews`);
 
   return response.data;
 }

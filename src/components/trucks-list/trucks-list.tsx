@@ -62,11 +62,7 @@ export default function TrucksList({
     <div className={styles.wrapper}>
       <ul className={styles.list}>
         {trucks.map((truck, index) => (
-          <li
-            key={truck.id}
-            data-truck-index={index}
-            className={styles.item}
-          >
+          <li key={truck.id} data-truck-index={index} className={styles.item}>
             <TruckCard truck={truck} />
           </li>
         ))}

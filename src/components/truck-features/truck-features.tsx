@@ -42,15 +42,10 @@ function formatConsumption(value: string) {
   return value
     .trim()
     .replace(/\s+/g, "")
-    .replace(
-      /^([\d.,]+)l\/100km$/i,
-      "$1 l / 100 km",
-    );
+    .replace(/^([\d.,]+)l\/100km$/i, "$1 l / 100 km");
 }
 
-export default function TruckFeatures({
-  truck,
-}: TruckFeaturesProps) {
+export default function TruckFeatures({ truck }: TruckFeaturesProps) {
   const amenities = Array.isArray(truck.amenities)
     ? truck.amenities
     : truck.amenities
@@ -59,9 +54,7 @@ export default function TruckFeatures({
 
   const featureLabels = [
     getLabel(transmissionOptions, truck.transmission),
-    ...amenities.map(
-      (amenity) => amenityLabels[amenity] ?? amenity,
-    ),
+    ...amenities.map((amenity) => amenityLabels[amenity] ?? amenity),
     getLabel(engineOptions, truck.engine),
     getLabel(truckFormOptions, truck.form),
   ];
@@ -73,11 +66,7 @@ export default function TruckFeatures({
 
         <div className={styles.meta}>
           <span className={styles.rating}>
-            <FaStar
-              className={styles.star}
-              aria-hidden="true"
-            />
-
+            <FaStar className={styles.star} aria-hidden="true" />
             {truck.rating}({truck.totalReviews} Reviews)
           </span>
 
@@ -87,22 +76,15 @@ export default function TruckFeatures({
           </span>
         </div>
 
-        <p className={styles.price}>
-          €{truck.price.toLocaleString("en-US")}
-        </p>
+        <p className={styles.price}>€{truck.price.toLocaleString("en-US")}</p>
 
-        <p className={styles.description}>
-          {truck.description}
-        </p>
+        <p className={styles.description}>{truck.description}</p>
       </div>
 
       <div className={styles.vehicle}>
         <h2 className={styles.title}>Vehicle details</h2>
 
-        <FeatureBadges
-          key={featureLabels.join("|")}
-          labels={featureLabels}
-        />
+        <FeatureBadges key={featureLabels.join("|")} labels={featureLabels} />
 
         <dl className={styles.details}>
           <div className={styles.detail}>

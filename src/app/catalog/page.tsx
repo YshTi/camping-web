@@ -44,15 +44,12 @@ export default function CatalogPage() {
     initialPageParam: 1,
 
     getNextPageParam: (lastPage) =>
-      lastPage.page < lastPage.totalPages
-        ? lastPage.page + 1
-        : undefined,
-    
+      lastPage.page < lastPage.totalPages ? lastPage.page + 1 : undefined,
+
     gcTime: 0,
   });
 
-  const trucks =
-    data?.pages.flatMap((page) => page.campers) ?? [];
+  const trucks = data?.pages.flatMap((page) => page.campers) ?? [];
 
   const handleFilterSubmit = (filters: TruckFilters) => {
     setActiveFilters(filters);

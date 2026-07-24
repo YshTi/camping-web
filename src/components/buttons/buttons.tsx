@@ -1,8 +1,5 @@
 import Link from "next/link";
-import type {
-  ComponentProps,
-  ReactNode,
-} from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import styles from "./buttons.module.css";
 
@@ -14,10 +11,7 @@ interface BaseProps {
   className?: string;
 }
 
-type ButtonProps = Omit<
-  ComponentProps<"button">,
-  "children" | "className"
-> &
+type ButtonProps = Omit<ComponentProps<"button">, "children" | "className"> &
   BaseProps;
 
 export function Button({

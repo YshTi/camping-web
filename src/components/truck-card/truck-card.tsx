@@ -42,30 +42,28 @@ export default function TruckCard({ truck }: TruckCardProps) {
 
       <div className={styles.content}>
         <div className={styles.topInfo}>
-            <div className={styles.top}>
-                <h2 className={styles.title}>{truck.name}</h2>
+          <div className={styles.top}>
+            <h2 className={styles.title}>{truck.name}</h2>
 
-                <p className={styles.price}>
-                    €{truck.price.toLocaleString("en-US")}
-                </p>
-            </div>
+            <p className={styles.price}>
+              €{truck.price.toLocaleString("en-US")}
+            </p>
+          </div>
 
-            <div className={styles.meta}>
-                <span className={styles.rating}>
-                    <FaStar className={styles.star} aria-hidden="true" />
-                    {truck.rating}({truck.totalReviews} Reviews)
-                </span>
+          <div className={styles.meta}>
+            <span className={styles.rating}>
+              <FaStar className={styles.star} aria-hidden="true" />
+              {truck.rating}({truck.totalReviews} Reviews)
+            </span>
 
-                <span className={styles.location}>
-                    <IoMapOutline className={styles.locationSvg} aria-hidden="true" />
-                    {truck.location}
-                </span>
-            </div>
+            <span className={styles.location}>
+              <IoMapOutline className={styles.locationSvg} aria-hidden="true" />
+              {truck.location}
+            </span>
+          </div>
         </div>
 
-        <p className={styles.description}>
-          {truck.description}
-        </p>
+        <p className={styles.description}>{truck.description}</p>
 
         <ul className={styles.badges}>
           <li className={styles.badge}>
@@ -74,7 +72,7 @@ export default function TruckCard({ truck }: TruckCardProps) {
           </li>
 
           <li className={styles.badge}>
-                      <TbManualGearbox aria-hidden="true" className={styles.gearbox} />
+            <TbManualGearbox aria-hidden="true" className={styles.gearbox} />
             {getLabel(transmissionOptions, truck.transmission)}
           </li>
 
@@ -85,12 +83,12 @@ export default function TruckCard({ truck }: TruckCardProps) {
         </ul>
 
         <ButtonLink
-            href={`/catalog/${truck.id}`}
-            variant="primary"
-            target="_blank"
-            className={styles.link}
-            >
-            Show more
+          href={`/catalog/${truck.id}`}
+          variant="primary"
+          target="_blank"
+          className={styles.link}
+        >
+          Show more
         </ButtonLink>
       </div>
     </article>

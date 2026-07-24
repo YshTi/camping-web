@@ -26,7 +26,7 @@ export default function NotFound({
       />
       <h2 className={styles.title}>{title}</h2>
       <p className={styles.message}>{message}</p>
-      
+
       <div className={styles.actions}>
         <Button
           type="button"
@@ -34,10 +34,7 @@ export default function NotFound({
           onClick={onClearFilters}
           className={styles.button}
         >
-          <IoCloseOutline 
-            className={styles.closeIcon}
-            aria-hidden="true"
-          />
+          <IoCloseOutline className={styles.closeIcon} aria-hidden="true" />
           Clear filters
         </Button>
 

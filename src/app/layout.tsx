@@ -19,7 +19,8 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: "TravelTrucks",
-  description: "Camper rental service. Browse and filter campervans available for rent.",
+  description:
+    "Camper rental service. Browse and filter campervans available for rent.",
 };
 
 export default function RootLayout({
@@ -28,9 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en"
+    <html
+      lang="en"
       data-scroll-behavior="smooth"
-      className={`${inter.variable} ${manrope.variable}`}>
+      className={`${inter.variable} ${manrope.variable}`}
+    >
       <body>
         <TanStackProvider>
           <Header />

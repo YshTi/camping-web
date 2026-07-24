@@ -27,11 +27,7 @@ export default function Pagination({
 
   return (
     <div className={styles.pagination}>
-      <Button
-        type="button"
-        variant="secondary"
-        onClick={onLoadMore}
-      >
+      <Button type="button" variant="secondary" onClick={onLoadMore}>
         Load More
       </Button>
     </div>

@@ -1,7 +1,7 @@
 .pagination,
 .loaderWrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 40px;
 }

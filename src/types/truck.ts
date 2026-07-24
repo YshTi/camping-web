@@ -1,18 +1,9 @@
 export type TruckForm =
-  | "alcove"
-  | "panel_van"
-  | "integrated"
-  | "semi_integrated";
+  "alcove" | "panel_van" | "integrated" | "semi_integrated";
 
-export type TruckTransmission =
-  | "automatic"
-  | "manual";
+export type TruckTransmission = "automatic" | "manual";
 
-export type TruckEngine =
-  | "diesel"
-  | "petrol"
-  | "hybrid"
-  | "electric";
+export type TruckEngine = "diesel" | "petrol" | "hybrid" | "electric";
 
 export type TruckAmenity =
   | "ac"

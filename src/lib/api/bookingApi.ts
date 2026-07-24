@@ -19,8 +19,5 @@ export async function createBookingRequest(
   camperId: string,
   booking: BookingRequest,
 ): Promise<void> {
-  await api.post(
-    `/campers/${camperId}/booking-requests`,
-    booking,
-  );
+  await api.post(`/campers/${camperId}/booking-requests`, booking);
 }

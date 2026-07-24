@@ -18,23 +18,19 @@ export default function Header() {
         <Logo />
 
         <nav className={styles.nav} aria-label="Main navigation">
-            <Link
-            className={`${styles.link} ${
-                isHomeActive ? styles.active : ""
-            }`}
+          <Link
+            className={`${styles.link} ${isHomeActive ? styles.active : ""}`}
             href="/"
-            >
+          >
             Home
-            </Link>
+          </Link>
 
-            <Link
-            className={`${styles.link} ${
-                isCatalogActive ? styles.active : ""
-            }`}
+          <Link
+            className={`${styles.link} ${isCatalogActive ? styles.active : ""}`}
             href="/catalog"
-            >
+          >
             Catalog
-            </Link>
+          </Link>
         </nav>
       </Container>
     </header>

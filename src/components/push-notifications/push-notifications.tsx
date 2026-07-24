@@ -41,9 +41,7 @@ function NotificationContent({
       <div className={styles.content}>
         <p className={styles.title}>{title}</p>
 
-        {message && (
-          <p className={styles.message}>{message}</p>
-        )}
+        {message && <p className={styles.message}>{message}</p>}
       </div>
 
       <button
@@ -66,11 +64,7 @@ interface ShowNotificationOptions {
 
 function showNotification(
   type: NotificationType,
-  {
-    title,
-    message,
-    duration = 4000,
-  }: ShowNotificationOptions,
+  { title, message, duration = 4000 }: ShowNotificationOptions,
 ) {
   return toast.custom(
     (toastInstance) => (

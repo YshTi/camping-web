@@ -1,155 +1,155 @@
 .sidebar {
-    width: 360px;
+  width: 360px;
 
-    border-radius: 20px;
-    padding: 24px;
-    background-color: var(--inputs);
-    height: 840px;
+  border-radius: 20px;
+  padding: 24px;
+  background-color: var(--inputs);
+  height: 840px;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .locationGroup {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .label,
 .legend {
-    color: var(--gray);
+  color: var(--gray);
 }
 
 .label {
-    display: block;
-    margin-bottom: 8px;
+  display: block;
+  margin-bottom: 8px;
 }
 
 .inputWrapper {
-    display: inline-flex;
-    gap: 8px;
-    width: 100%;
-    height: 56px;
-    padding: 16px 20px;
-        
-    border: 1px solid transparent;
-    border-radius: 12px;
-        
-    color: var(--main);
-    background-color: var(--white);
+  display: inline-flex;
+  gap: 8px;
+  width: 100%;
+  height: 56px;
+  padding: 16px 20px;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  color: var(--main);
+  background-color: var(--white);
 }
 
 .locationIcon {
-    width: 20px;
-    height: 20px;
-    color: var(--gray);
+  width: 20px;
+  height: 20px;
+  color: var(--gray);
 }
 
 .locationIconActive {
-    color: var(--main);
+  color: var(--main);
 }
 
 .locationInput {
-    font-size: 16px;
-    color: var(--main);
+  font-size: 16px;
+  color: var(--main);
 }
 
 .locationInput:focus {
-    border-color: var(--grey-green);
-    outline: none;
+  border-color: var(--grey-green);
+  outline: none;
 }
 
 .title {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.33;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
 }
 
 .filters {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
-    margin-bottom: 48px;
+  margin-bottom: 48px;
 }
 
 .fieldset {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0;
-    border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  border: none;
 }
 
 .legend {
-    margin-bottom: 8px;
-    font-weight: 400;
+  margin-bottom: 8px;
+  font-weight: 400;
 }
 
 .radioLabel {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-    color: var(--main);
-    font-weight: 400;
+  color: var(--main);
+  font-weight: 400;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .radioInput {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .customRadio {
-    position: relative;
+  position: relative;
 
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 
-    border: 1px solid var(--text);
-    border-radius: 50%;
+  border: 1px solid var(--text);
+  border-radius: 50%;
 }
 
-.radioInput:checked+.customRadio::after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+.radioInput:checked + .customRadio::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
-    width: 14px;
-    height: 14px;
+  width: 14px;
+  height: 14px;
 
-    border-radius: 50%;
-    background-color: var(--text);
+  border-radius: 50%;
+  background-color: var(--text);
 
-    content: "";
-    transform: translate(-50%, -50%);
+  content: "";
+  transform: translate(-50%, -50%);
 }
 
-.radioInput:focus-visible+.customRadio {
-    outline: 2px solid var(--grey-green);
-    outline-offset: 2px;
+.radioInput:focus-visible + .customRadio {
+  outline: 2px solid var(--grey-green);
+  outline-offset: 2px;
 }
 
 .actions {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.actions>button {
-    width: 100%;
+.actions > button {
+  width: 100%;
 }
 
 .closeIcon {
-    width: 24px;
-    height: 24px;
-    margin-right: 4px;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
 }

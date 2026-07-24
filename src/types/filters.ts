@@ -1,21 +1,10 @@
 export type TruckFilterForm =
-  | ""
-  | "alcove"
-  | "panel_van"
-  | "integrated"
-  | "semi_integrated";
+  "" | "alcove" | "panel_van" | "integrated" | "semi_integrated";
 
-export type TruckFilterTransmission =
-  | ""
-  | "automatic"
-  | "manual";
+export type TruckFilterTransmission = "" | "automatic" | "manual";
 
 export type TruckFilterEngine =
-  | ""
-  | "diesel"
-  | "petrol"
-  | "hybrid"
-  | "electric";
+  "" | "diesel" | "petrol" | "hybrid" | "electric";
 
 export interface TruckFilters {
   location: string;

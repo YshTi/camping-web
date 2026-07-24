@@ -6,15 +6,9 @@ import TruckFeatures from "@/components/truck-features/truck-features";
 import Reviews from "@/components/reviews/reviews";
 import BookingForm from "@/components/booking-form/booking-form";
 
-import {
-  getTruckById,
-  getTruckReviews,
-} from "@/lib/api/catalog";
+import { getTruckById, getTruckReviews } from "@/lib/api/catalog";
 
-import type {
-  Truck,
-  TruckReview,
-} from "@/types/truck";
+import type { Truck, TruckReview } from "@/types/truck";
 
 import styles from "./page.module.css";
 
@@ -44,26 +38,19 @@ export default async function CamperDetailsPage({
   return (
     <Container className={styles.camperContainer}>
       <section className={styles.topSection}>
-        <TruckGallery
-          images={truck.gallery}
-          truckName={truck.name}
-        />
+        <TruckGallery images={truck.gallery} truckName={truck.name} />
 
         <TruckFeatures truck={truck} />
       </section>
       <section aria-labelledby="reviews-title" className={styles.bottomSection}>
-        <h2 id="reviews-title"
-          className={styles.reviewsTitle}>
+        <h2 id="reviews-title" className={styles.reviewsTitle}>
           Reviews
         </h2>
 
         <div className={styles.reviewsContent}>
           <Reviews reviews={reviews} />
 
-          <BookingForm
-            camperId={truck.id}
-            camperName={truck.name}
-          />
+          <BookingForm camperId={truck.id} camperName={truck.name} />
         </div>
       </section>
     </Container>

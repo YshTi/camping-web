@@ -29,9 +29,7 @@ function ReviewCard({ review }: { review: TruckReview }) {
         </div>
 
         <div className={styles.reviewer}>
-          <h3 className={styles.name}>
-            {review.reviewer_name}
-          </h3>
+          <h3 className={styles.name}>{review.reviewer_name}</h3>
 
           <div
             className={styles.rating}
@@ -41,9 +39,7 @@ function ReviewCard({ review }: { review: TruckReview }) {
               <FaStar
                 key={index}
                 className={
-                  index < rating
-                    ? styles.starFilled
-                    : styles.starEmpty
+                  index < rating ? styles.starFilled : styles.starEmpty
                 }
                 aria-hidden="true"
               />
@@ -52,9 +48,7 @@ function ReviewCard({ review }: { review: TruckReview }) {
         </div>
       </div>
 
-      <p className={styles.comment}>
-        {review.comment}
-      </p>
+      <p className={styles.comment}>{review.comment}</p>
     </article>
   );
 }
@@ -71,10 +65,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
   const useSlider = reviews.length > 2;
 
   return (
-    <section
-      className={styles.reviews}
-    >
-
+    <section className={styles.reviews}>
       {useSlider ? (
         <Swiper
           className={styles.slider}
@@ -91,10 +82,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
           watchOverflow
         >
           {reviews.map((review) => (
-            <SwiperSlide
-              className={styles.slide}
-              key={review.id}
-            >
+            <SwiperSlide className={styles.slide} key={review.id}>
               <ReviewCard review={review} />
             </SwiperSlide>
           ))}
