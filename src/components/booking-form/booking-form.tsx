@@ -74,6 +74,8 @@ export default function BookingForm({
           initialValues={initialValues}
           validationSchema={validationSchema}
           validateOnMount
+          validateOnBlur
+          validateOnChange={false}
           onSubmit={async (
             values,
             { resetForm, setSubmitting },
