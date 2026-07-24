@@ -1,16 +1,23 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { IoMapOutline } from "react-icons/io5";
-import { IoCloseOutline } from "react-icons/io5";
+import {
+  IoCloseOutline,
+  IoMapOutline,
+} from "react-icons/io5";
 
 import { Button } from "@/components/buttons/buttons";
 import type {
   TruckFilterEngine,
-  TruckFilters,
   TruckFilterForm,
+  TruckFilters,
   TruckFilterTransmission,
 } from "@/types/filters";
+import {
+  engineOptions,
+  transmissionOptions,
+  truckFormOptions,
+} from "@/types/trucks";
 
 import styles from "./catalog-filter.module.css";
 
@@ -21,20 +28,17 @@ const initialFilters: TruckFilters = {
   transmission: "",
 };
 
-import {
-  engineOptions,
-  transmissionOptions,
-  truckFormOptions,
-} from "@/types/trucks"
-
 interface CatalogFilterProps {
+  initialValue: TruckFilters;
   onSubmit: (filters: TruckFilters) => void;
 }
 
 export default function CatalogFilter({
+  initialValue,
   onSubmit,
 }: CatalogFilterProps) {
-  const [filters, setFilters] = useState<TruckFilters>(initialFilters);
+  const [filters, setFilters] =
+    useState<TruckFilters>(initialValue);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -77,76 +81,87 @@ export default function CatalogFilter({
         </div>
 
         <div className={styles.filters}>
-            <h2 className={styles.title}>Filters</h2>
+          <h2 className={styles.title}>Filters</h2>
 
-            <fieldset className={styles.fieldset}>
-            <legend className={styles.legend}>Camper form</legend>
+          <fieldset className={styles.fieldset}>
+            <legend className={styles.legend}>
+              Camper form
+            </legend>
 
             {truckFormOptions.map((option) => (
-                <RadioOption
+              <RadioOption
                 key={option.value}
                 label={option.label}
                 name="form"
                 value={option.value}
                 checked={filters.form === option.value}
                 onChange={(value) =>
-                    setFilters((previous) => ({
+                  setFilters((previous) => ({
                     ...previous,
                     form: value as TruckFilterForm,
-                    }))
+                  }))
                 }
-                />
+              />
             ))}
-            </fieldset>
+          </fieldset>
 
-            <fieldset className={styles.fieldset}>
-            <legend className={styles.legend}>Engine</legend>
+          <fieldset className={styles.fieldset}>
+            <legend className={styles.legend}>
+              Engine
+            </legend>
 
             {engineOptions.map((option) => (
-                <RadioOption
+              <RadioOption
                 key={option.value}
                 label={option.label}
                 name="engine"
                 value={option.value}
                 checked={filters.engine === option.value}
                 onChange={(value) =>
-                    setFilters((previous) => ({
+                  setFilters((previous) => ({
                     ...previous,
                     engine: value as TruckFilterEngine,
-                    }))
+                  }))
                 }
-                />
+              />
             ))}
-            </fieldset>
+          </fieldset>
 
-            <fieldset className={styles.fieldset}>
-            <legend className={styles.legend}>Transmission</legend>
+          <fieldset className={styles.fieldset}>
+            <legend className={styles.legend}>
+              Transmission
+            </legend>
 
             {transmissionOptions.map((option) => (
-                <RadioOption
+              <RadioOption
                 key={option.value}
                 label={option.label}
                 name="transmission"
                 value={option.value}
                 checked={filters.transmission === option.value}
                 onChange={(value) =>
-                    setFilters((previous) => ({
+                  setFilters((previous) => ({
                     ...previous,
-                    transmission: value as TruckFilterTransmission,
-                    }))
+                    transmission:
+                      value as TruckFilterTransmission,
+                  }))
                 }
-                />
+              />
             ))}
-            </fieldset>
+          </fieldset>
         </div>
 
         <div className={styles.actions}>
           <Button type="submit" variant="primary">
             Search
           </Button>
-          
-          <Button type="button" variant="secondary" onClick={handleClear}>
-            <IoCloseOutline 
+
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={handleClear}
+          >
+            <IoCloseOutline
               className={styles.closeIcon}
               aria-hidden="true"
             />
@@ -184,7 +199,11 @@ function RadioOption({
         onChange={(event) => onChange(event.target.value)}
       />
 
-      <span className={styles.customRadio} aria-hidden="true" />
+      <span
+        className={styles.customRadio}
+        aria-hidden="true"
+      />
+
       <span>{label}</span>
     </label>
   );

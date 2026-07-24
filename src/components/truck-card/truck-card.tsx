@@ -88,8 +88,6 @@ export default function TruckCard({ truck }: TruckCardProps) {
             href={`/catalog/${truck.id}`}
             variant="primary"
             className={styles.link}
-            target="_blank"
-            rel="noopener noreferrer"
             >
             Show more
         </ButtonLink>

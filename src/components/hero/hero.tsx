@@ -1,5 +1,5 @@
 import styles from "./hero.module.css";
-import { Button } from "../buttons/buttons";
+import { ButtonLink } from "../buttons/buttons";
 import Container from "@/components/container/container";
 
 export default function Hero() {
@@ -13,7 +13,7 @@ export default function Hero() {
             You can find everything you want in our catalog
             </p>
         </div>
-        <Button variant="primary">View Now</Button>
+        <ButtonLink href="/catalog" variant="primary">View Now</ButtonLink>
       </Container>
     </section>
   );

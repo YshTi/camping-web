@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 import CatalogFilter from "@/components/catalog-filter/catalog-filter";
 import Container from "@/components/container/container";
-import TruckCard from "@/components/truck-card/truck-card";
+import Loader from "@/components/loader/loader";
+import TrucksList from "@/components/trucks-list/trucks-list";
 
+import { getTrucks } from "@/lib/api/catalog";
 import type { TruckFilters } from "@/types/filters";
-import type { Truck } from "@/types/truck";
 
 import styles from "./page.module.css";
 
@@ -18,34 +20,85 @@ const initialFilters: TruckFilters = {
   transmission: "",
 };
 
-const mockTruck: Truck = {
-  id: "1",
-  name: "Mavericks",
-  price: 8000,
-  rating: 4.4,
-  location: "Kyiv, Ukraine",
-  form: "alcove",
-  length: "6.5 m",
-  width: "2.3 m",
-  height: "3.1 m",
-  tank: "100 l",
-  consumption: "12 l/100 km",
-  transmission: "automatic",
-  engine: "petrol",
-  amenities: ["ac", "bathroom", "kitchen"],
-  coverImage: "/images/hero.webp",
-  totalReviews: 2,
-};
-
 export default function CatalogPage() {
-  const [, setActiveFilters] =
+  const [activeFilters, setActiveFilters] =
     useState<TruckFilters>(initialFilters);
+
+  const {
+    data,
+    error,
+    isPending,
+    isError,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["trucks", activeFilters],
+
+    queryFn: ({ pageParam }) =>
+      getTrucks({
+        page: pageParam,
+        filters: activeFilters,
+      }),
+
+    initialPageParam: 1,
+
+    getNextPageParam: (lastPage) =>
+      lastPage.page < lastPage.totalPages
+        ? lastPage.page + 1
+        : undefined,
+    
+    gcTime: 0,
+  });
+
+  const trucks =
+    data?.pages.flatMap((page) => page.campers) ?? [];
+
+  const handleFilterSubmit = (filters: TruckFilters) => {
+    setActiveFilters(filters);
+  };
+
+  const handleClearFilters = () => {
+    setActiveFilters(initialFilters);
+  };
 
   return (
     <Container className={styles.content}>
-      <CatalogFilter onSubmit={setActiveFilters} />
+      <CatalogFilter
+        key={JSON.stringify(activeFilters)}
+        initialValue={activeFilters}
+        onSubmit={handleFilterSubmit}
+      />
 
-      <TruckCard truck={mockTruck} />
+      <div className={styles.results}>
+        {isPending && <Loader />}
+
+        {isError && (
+          <div className={styles.errorContainer}>
+            <h1>Unable to load trucks</h1>
+
+            <p>
+              {error instanceof Error
+                ? error.message
+                : "Something went wrong. Please try again."}
+            </p>
+          </div>
+        )}
+
+        {!isPending && !isError && (
+          <TrucksList
+            trucks={trucks}
+            onLoadMore={() => {
+              if (hasNextPage && !isFetchingNextPage) {
+                void fetchNextPage();
+              }
+            }}
+            onClearFilters={handleClearFilters}
+            hasNextPage={Boolean(hasNextPage)}
+            isLoadingMore={isFetchingNextPage}
+          />
+        )}
+      </div>
     </Container>
   );
 }

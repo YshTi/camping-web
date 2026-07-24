@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import TanStackProvider from "@/providers/tanstack-provider";
 import Header from "@/components/header/header";
 import "./globals.css";
 
@@ -30,8 +31,10 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${manrope.variable}`}>
       <body>
-        <Header />
-        <main>{children}</main>
+        <TanStackProvider>
+          <Header />
+          <main>{children}</main>
+        </TanStackProvider>
       </body>
     </html>
   );
