@@ -44,7 +44,7 @@ export default async function CamperDetailsPage({
   }
 
   return (
-    <Container className={styles.container}>
+    <Container className={styles.camperContainer}>
       <section className={styles.topSection}>
         <TruckGallery
           images={truck.gallery}
