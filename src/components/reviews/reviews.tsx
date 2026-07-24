@@ -63,7 +63,6 @@ export default function Reviews({ reviews }: ReviewsProps) {
   if (reviews.length === 0) {
     return (
       <section className={styles.empty}>
-        <h2 className={styles.title}>Reviews</h2>
         <p>No reviews yet.</p>
       </section>
     );
@@ -74,11 +73,7 @@ export default function Reviews({ reviews }: ReviewsProps) {
   return (
     <section
       className={styles.reviews}
-      aria-labelledby="reviews-title"
     >
-      <h2 id="reviews-title" className={styles.title}>
-        Reviews
-      </h2>
 
       {useSlider ? (
         <Swiper

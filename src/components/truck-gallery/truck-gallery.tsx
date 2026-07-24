@@ -119,7 +119,7 @@ export default function TruckGallery({
             },
             900: {
               slidesPerView: 4,
-              spaceBetween: 24,
+              spaceBetween: 32,
             },
           }}
         >

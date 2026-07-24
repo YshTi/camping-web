@@ -2,15 +2,6 @@
     width: 623px;
 }
 
-.title {
-    margin-bottom: 24px;
-
-    color: var(--main);
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.33;
-}
-
 /* Static list for 1–2 reviews */
 
 .list {

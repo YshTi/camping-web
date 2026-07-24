@@ -53,9 +53,21 @@ export default async function CamperDetailsPage({
 
         <TruckFeatures truck={truck} />
       </section>
-      <section className={styles.bottomSection}> 
-        <Reviews reviews={reviews} />
-        <BookingForm camperId={truck.id} camperName={truck.name} />
+      <section className={styles.bottomSection}>
+        <h2 id="reviews-title"
+          aria-labelledby="reviews-title"
+          className={styles.reviewsTitle}>
+          Reviews
+        </h2>
+
+        <div className={styles.reviewsContent}>
+          <Reviews reviews={reviews} />
+
+          <BookingForm
+            camperId={truck.id}
+            camperName={truck.name}
+          />
+        </div>
       </section>
     </Container>
   );

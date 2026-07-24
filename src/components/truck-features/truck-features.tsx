@@ -1,5 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import { IoMapOutline } from "react-icons/io5";
+import FeatureBadges from "@/components/truck-features/feature-badges/feature-badges";
 
 import type { Truck } from "@/types/truck";
 import {
@@ -98,13 +99,10 @@ export default function TruckFeatures({
       <div className={styles.vehicle}>
         <h2 className={styles.title}>Vehicle details</h2>
 
-        <ul className={styles.badges}>
-          {featureLabels.map((label) => (
-            <li className={styles.badge} key={label}>
-              {label}
-            </li>
-          ))}
-        </ul>
+        <FeatureBadges
+          key={featureLabels.join("|")}
+          labels={featureLabels}
+        />
 
         <dl className={styles.details}>
           <div className={styles.detail}>
