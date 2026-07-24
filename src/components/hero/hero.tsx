@@ -1,5 +1,5 @@
 import styles from "./hero.module.css";
-import Button from "../buttons/buttons";
+import { Button } from "../buttons/buttons";
 import Container from "@/components/container/container";
 
 export default function Hero() {

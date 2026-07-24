@@ -4,12 +4,12 @@ import { useState, type FormEvent } from "react";
 import { IoMapOutline } from "react-icons/io5";
 import { IoCloseOutline } from "react-icons/io5";
 
-import Button from "@/components/buttons/buttons";
+import { Button } from "@/components/buttons/buttons";
 import type {
-  TruckEngine,
+  TruckFilterEngine,
   TruckFilters,
-  TruckForm,
-  TruckTransmission,
+  TruckFilterForm,
+  TruckFilterTransmission,
 } from "@/types/filters";
 
 import styles from "./catalog-filter.module.css";
@@ -21,24 +21,11 @@ const initialFilters: TruckFilters = {
   transmission: "",
 };
 
-const truckFormOptions = [
-  { label: "Alcove", value: "alcove" },
-  { label: "Panel Van", value: "panel_van" },
-  { label: "Integrated", value: "integrated" },
-  { label: "Semi Integrated", value: "semi_integrated" },
-] as const;
-
-const engineOptions = [
-  { label: "Diesel", value: "diesel" },
-  { label: "Petrol", value: "petrol" },
-  { label: "Hybrid", value: "hybrid" },
-  { label: "Electric", value: "electric" },
-] as const;
-
-const transmissionOptions = [
-  { label: "Automatic", value: "automatic" },
-  { label: "Manual", value: "manual" },
-] as const;
+import {
+  engineOptions,
+  transmissionOptions,
+  truckFormOptions,
+} from "@/types/trucks"
 
 interface CatalogFilterProps {
   onSubmit: (filters: TruckFilters) => void;
@@ -105,7 +92,7 @@ export default function CatalogFilter({
                 onChange={(value) =>
                     setFilters((previous) => ({
                     ...previous,
-                    form: value as TruckForm,
+                    form: value as TruckFilterForm,
                     }))
                 }
                 />
@@ -125,7 +112,7 @@ export default function CatalogFilter({
                 onChange={(value) =>
                     setFilters((previous) => ({
                     ...previous,
-                    engine: value as TruckEngine,
+                    engine: value as TruckFilterEngine,
                     }))
                 }
                 />
@@ -145,7 +132,7 @@ export default function CatalogFilter({
                 onChange={(value) =>
                     setFilters((previous) => ({
                     ...previous,
-                    transmission: value as TruckTransmission,
+                    transmission: value as TruckFilterTransmission,
                     }))
                 }
                 />
@@ -158,7 +145,7 @@ export default function CatalogFilter({
             Search
           </Button>
           
-          <Button type="submit" variant="secondary">
+          <Button type="button" variant="secondary" onClick={handleClear}>
             <IoCloseOutline 
               className={styles.closeIcon}
               aria-hidden="true"

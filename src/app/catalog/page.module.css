@@ -1,0 +1,6 @@
+.content {
+    display: inline-flex;
+    justify-content: space-between;
+    
+    padding: 48px 64px 52px 63px;
+}

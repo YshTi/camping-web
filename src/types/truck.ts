@@ -1,18 +1,53 @@
-export const truckFormOptions = [
-  { label: "Alcove", value: "alcove" },
-  { label: "Panel Van", value: "panel_van" },
-  { label: "Integrated", value: "integrated" },
-  { label: "Semi Integrated", value: "semi_integrated" },
-] as const;
+export type TruckForm =
+  | "alcove"
+  | "panel_van"
+  | "integrated"
+  | "semi_integrated";
 
-export const engineOptions = [
-  { label: "Diesel", value: "diesel" },
-  { label: "Petrol", value: "petrol" },
-  { label: "Hybrid", value: "hybrid" },
-  { label: "Electric", value: "electric" },
-] as const;
+export type TruckTransmission =
+  | "automatic"
+  | "manual";
 
-export const transmissionOptions = [
-  { label: "Automatic", value: "automatic" },
-  { label: "Manual", value: "manual" },
-] as const;
+export type TruckEngine =
+  | "diesel"
+  | "petrol"
+  | "hybrid"
+  | "electric";
+
+export type TruckAmenity =
+  | "ac"
+  | "bathroom"
+  | "kitchen"
+  | "tv"
+  | "radio"
+  | "refrigerator"
+  | "microwave"
+  | "gas"
+  | "water";
+
+export interface Truck {
+  id: string;
+  name: string;
+  price: number;
+  rating: number;
+  location: string;
+  form: TruckForm;
+  length: string;
+  width: string;
+  height: string;
+  tank: string;
+  consumption: string;
+  transmission: TruckTransmission;
+  engine: TruckEngine;
+  amenities: TruckAmenity[];
+  coverImage: string;
+  totalReviews: number;
+}
+
+export interface TrucksResponse {
+  page: number;
+  perPage: number;
+  total: number;
+  totalPages: number;
+  campers: Truck[];
+}
