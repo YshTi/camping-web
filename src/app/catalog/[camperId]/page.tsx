@@ -4,6 +4,7 @@ import Container from "@/components/container/container";
 import TruckGallery from "@/components/truck-gallery/truck-gallery";
 import TruckFeatures from "@/components/truck-features/truck-features";
 import Reviews from "@/components/reviews/reviews";
+import BookingForm from "@/components/booking-form/booking-form";
 
 import {
   getTruckById,
@@ -54,6 +55,7 @@ export default async function CamperDetailsPage({
       </section>
       <section className={styles.bottomSection}> 
         <Reviews reviews={reviews} />
+        <BookingForm camperId={truck.id} camperName={truck.name} />
       </section>
     </Container>
   );
