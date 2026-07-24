@@ -88,7 +88,7 @@ export default function BookingForm({
 
               pushNotification.success({
                   title: "Booking request accepted",
-                  message: `Booking request for «${camperName}» accepted. We will contact you at email ${values.email.trim()}.`,
+                  message: `Booking request for «${camperName}» accepted. We will contact you at ${values.email.trim()}.`,
               });
 
               resetForm();

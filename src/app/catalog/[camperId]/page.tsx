@@ -37,8 +37,6 @@ export default async function CamperDetailsPage({
       getTruckById(camperId),
       getTruckReviews(camperId),
     ]);
-
-    truck = await getTruckById(camperId);
   } catch {
     notFound();
   }
@@ -53,9 +51,8 @@ export default async function CamperDetailsPage({
 
         <TruckFeatures truck={truck} />
       </section>
-      <section className={styles.bottomSection}>
+      <section aria-labelledby="reviews-title" className={styles.bottomSection}>
         <h2 id="reviews-title"
-          aria-labelledby="reviews-title"
           className={styles.reviewsTitle}>
           Reviews
         </h2>

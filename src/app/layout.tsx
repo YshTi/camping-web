@@ -19,7 +19,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: "TravelTrucks",
-  description: "Camper rental service",
+  description: "Camper rental service. Browse and filter campervans available for rent.",
 };
 
 export default function RootLayout({

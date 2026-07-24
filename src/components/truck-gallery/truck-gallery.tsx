@@ -16,7 +16,6 @@ import type { TruckGalleryImage } from "@/types/truck";
 
 import "swiper/css";
 import "swiper/css/free-mode";
-import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import styles from "./truck-gallery.module.css";
