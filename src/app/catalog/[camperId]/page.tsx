@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 import Container from "@/components/container/container";
 import TruckGallery from "@/components/truck-gallery/truck-gallery";
@@ -16,6 +17,33 @@ interface CamperDetailsPageProps {
   params: Promise<{
     camperId: string;
   }>;
+}
+
+export async function generateMetadata({
+  params,
+}: CamperDetailsPageProps): Promise<Metadata> {
+  const { camperId } = await params;
+
+  try {
+    const truck = await getTruckById(camperId);
+
+    return {
+      title: truck.name,
+      description: truck.description,
+      openGraph: {
+        title: `${truck.name} | TravelTrucks`,
+        description: truck.description,
+        images: truck.gallery?.[0]?.original
+          ? [truck.gallery[0].original]
+          : [],
+      },
+    };
+  } catch {
+    return {
+      title: "Camper not found",
+      description: "The requested camper could not be found.",
+    };
+  }
 }
 
 export default async function CamperDetailsPage({

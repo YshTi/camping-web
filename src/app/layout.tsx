@@ -18,9 +18,23 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "TravelTrucks",
+  metadataBase: new URL("https://camping-web-iota.vercel.app"),
+
+  title: {
+    default: "TravelTrucks",
+    template: "%s | TravelTrucks",
+  },
+
   description:
-    "Camper rental service. Browse and filter campervans available for rent.",
+    "Browse, compare, and book campervans for your next journey.",
+
+  openGraph: {
+    title: "TravelTrucks",
+    description:
+      "Browse, compare, and book campervans for your next journey.",
+    type: "website",
+    siteName: "TravelTrucks",
+  },
 };
 
 export default function RootLayout({
