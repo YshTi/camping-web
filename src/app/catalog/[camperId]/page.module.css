@@ -1,14 +1,19 @@
-.camperContainer {
+/* .camperContainer {
     padding-top: 64px;
     padding-bottom: 278px;
-}
+} */
 
 .topSection {
     display: inline-flex;
     justify-content: space-between;
 
     width: 100%;
+    padding-top: 64px;
     padding-bottom: 88px;
+}
+
+.bottomSection {
+    padding-bottom: 278px;
 }
 
 .reviewsTitle {
