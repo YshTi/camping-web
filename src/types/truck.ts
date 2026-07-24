@@ -30,7 +30,9 @@ export interface Truck {
   name: string;
   price: number;
   rating: number;
+  totalReviews: number;
   location: string;
+  description: string;
   form: TruckForm;
   length: string;
   width: string;
@@ -39,9 +41,12 @@ export interface Truck {
   consumption: string;
   transmission: TruckTransmission;
   engine: TruckEngine;
-  amenities: TruckAmenity[];
+  amenities: TruckAmenity[] | TruckAmenity;
   coverImage: string;
-  totalReviews: number;
+  gallery: TruckGalleryImage[];
+  createdAt: string;
+  updatedAt: string;
+
 }
 
 export interface TrucksResponse {
@@ -50,4 +55,12 @@ export interface TrucksResponse {
   total: number;
   totalPages: number;
   campers: Truck[];
+}
+
+export interface TruckGalleryImage {
+  id: string;
+  camperId: string;
+  thumb: string;
+  original: string;
+  order: number;
 }

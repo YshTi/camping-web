@@ -64,7 +64,7 @@ export default function TruckCard({ truck }: TruckCardProps) {
         </div>
 
         <p className={styles.description}>
-          Explore comfort and freedom with the {truck.name}.
+          {truck.description}
         </p>
 
         <ul className={styles.badges}>

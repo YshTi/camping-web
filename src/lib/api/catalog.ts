@@ -1,7 +1,10 @@
 import axios from "axios";
 
 import type { TruckFilters } from "@/types/filters";
-import type { TrucksResponse } from "@/types/truck";
+import type {
+  Truck,
+  TrucksResponse,
+} from "@/types/truck";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -18,7 +21,6 @@ interface GetTrucksParams {
   filters: TruckFilters;
 }
 
-
 export async function getTrucks({
   page,
   filters,
@@ -33,6 +35,16 @@ export async function getTrucks({
       transmission: filters.transmission || undefined,
     },
   });
+
+  return response.data;
+}
+
+export async function getTruckById(
+  camperId: string,
+): Promise<Truck> {
+  const response = await api.get<Truck>(
+    `/campers/${camperId}`,
+  );
 
   return response.data;
 }
