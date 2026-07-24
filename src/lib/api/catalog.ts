@@ -3,6 +3,7 @@ import axios from "axios";
 import type { TruckFilters } from "@/types/filters";
 import type {
   Truck,
+  TruckReview,
   TrucksResponse,
 } from "@/types/truck";
 
@@ -44,6 +45,16 @@ export async function getTruckById(
 ): Promise<Truck> {
   const response = await api.get<Truck>(
     `/campers/${camperId}`,
+  );
+
+  return response.data;
+}
+
+export async function getTruckReviews(
+  camperId: string,
+): Promise<TruckReview[]> {
+  const response = await api.get<TruckReview[]>(
+    `/campers/${camperId}/reviews`,
   );
 
   return response.data;

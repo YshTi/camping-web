@@ -46,7 +46,6 @@ export interface Truck {
   gallery: TruckGalleryImage[];
   createdAt: string;
   updatedAt: string;
-
 }
 
 export interface TrucksResponse {
@@ -63,4 +62,13 @@ export interface TruckGalleryImage {
   thumb: string;
   original: string;
   order: number;
+}
+
+export interface TruckReview {
+  id: string;
+  camperId: string;
+  reviewer_name: string;
+  reviewer_rating: number;
+  comment: string;
+  createdAt: string;
 }
