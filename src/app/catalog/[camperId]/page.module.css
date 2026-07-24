@@ -2,3 +2,10 @@
     padding-top: 64px;
     padding-bottom: 278px;
 }
+
+.topSection {
+    display: inline-flex;
+    justify-content: space-between;
+
+    width: 100%;
+}

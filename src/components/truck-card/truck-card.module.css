@@ -110,6 +110,7 @@
 
     border-radius: 100px;
     background-color: var(--badges);
+    mix-blend-mode: multiply;
 
     color: var(--main);
     text-align: center;

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import Container from "@/components/container/container";
 import TruckGallery from "@/components/truck-gallery/truck-gallery";
+import TruckFeatures from "@/components/truck-features/truck-features";
 
 import { getTruckById } from "@/lib/api/catalog";
 import type { Truck } from "@/types/truck";
@@ -34,6 +35,8 @@ export default async function CamperDetailsPage({
           images={truck.gallery}
           truckName={truck.name}
         />
+        
+        <TruckFeatures truck={truck} />
       </section>
     </Container>
   );
