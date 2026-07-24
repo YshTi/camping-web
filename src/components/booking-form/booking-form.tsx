@@ -25,17 +25,28 @@ const initialValues: BookingFormValues = {
   email: "",
 };
 
+const nameRegex = /^[\p{L}\p{M}]+(?:[ '\u2019-][\p{L}\p{M}]+)*$/u;
+const emailRegex =
+  /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
+
 const validationSchema: yup.ObjectSchema<BookingFormValues> =
   yup.object({
     name: yup
       .string()
       .trim()
-      .min(2, "Please enter your full name.")
+      .min(4, "Please enter your full name.")
+      .matches(
+        nameRegex,
+        "Name may contain only letters, spaces, hyphens, and apostrophes between letters.",
+      )
       .required("Name is required."),
     email: yup
       .string()
       .trim()
-      .email("Please enter a valid email address.")
+      .matches(
+        emailRegex,
+        "Please enter a valid email address with a complete domain.",
+      )
       .required("Email is required."),
   });
 
