@@ -46,7 +46,7 @@ export default function TruckCard({ truck }: TruckCardProps) {
             <h2 className={styles.title}>{truck.name}</h2>
 
             <p className={styles.price}>
-              €{truck.price.toLocaleString("en-US")}
+              €{truck.price}
             </p>
           </div>
 

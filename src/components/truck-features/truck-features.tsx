@@ -76,7 +76,7 @@ export default function TruckFeatures({ truck }: TruckFeaturesProps) {
           </span>
         </div>
 
-        <p className={styles.price}>€{truck.price.toLocaleString("en-US")}</p>
+        <p className={styles.price}>€{truck.price}</p>
 
         <p className={styles.description}>{truck.description}</p>
       </div>
